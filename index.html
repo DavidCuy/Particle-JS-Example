@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pruebas Particle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>Particle probe</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <form id="login" onsubmit="Application.ParticleLogin(event, this)">
+                    <div class="form-group">
+                        <label for="user">Nombre de usuario:</label>
+                        <input type="user" class="form-control" id="user" name="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Loguearse</button>
+                    <!--button id="deleteTokenBtn" type="button" class="btn btn-danger" onclick="Application.ParticleLogout(this)" disabled>Eliminar token</button-->
+                    <button id="viewTokens" type="button" class="btn btn-success" onclick="Application.ParticleListTokens(this)">Listar tokens</button>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px; margin-bottom: 20px">
+            <div class="col-md-3" id="deviceSection" style="display: none">
+                <div class="form-group">
+                    <label for="devices">Dispositivos:</label>
+                    <select name="devices" class="form-control" onchange="Application.ParticleEventsLog(this.value)">
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <form class="form-inline" onsubmit="Application.AppDeleteToken(event, this)">
+                    <div class="form-group">
+                        <label for="token" class="mb-2 mr-sm-2">Token:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" name="token">
+                    </div>
+                    <button type="submit" class="btn btn-success">Eliminar token</button>
+                </form>
+                <div id="tokens">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="dataLogSection" style="display: none;">
+                <h3>Datos del evento: "wattBeeData"</h3>
+                <ul class="list-group" id="dataLog">
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
+<script src="main.js"></script>
+</html>
